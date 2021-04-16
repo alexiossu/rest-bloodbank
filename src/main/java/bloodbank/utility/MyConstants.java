@@ -35,6 +35,8 @@ public interface MyConstants {
     public static final String RESOURCE_PATH_ID_PATH =  "/{" + RESOURCE_PATH_ID_ELEMENT + "}";
     public static final String CREDENTIAL_RESOURCE_NAME = "credential";
     public static final String PERSON_RESOURCE_NAME =  "person";
+    public static final String ADDRESS_RESOURCE_NAME =  "address";
+    public static final String BLOOD_DONATION_RESOURCE_NAME =  "blooddonation";
     public static final String ORDER_RESOURCE_NAME =  "order";
     public static final String ORDERLINE_RESOURCE_NAME =  "orderLine";
     public static final String PRODUCT_RESOURCE_NAME =  "product";

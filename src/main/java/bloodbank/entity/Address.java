@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import org.hibernate.Hibernate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The persistent class for the address database table.
  */
@@ -131,6 +133,7 @@ public class Address extends PojoBase implements Serializable {
 		this.zipcode = zipcode;
 	}
 
+	@JsonIgnore
 	public Set< Contact> getContacts() {
 		return contacts;
 	}

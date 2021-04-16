@@ -74,13 +74,39 @@ public class BloodBankService implements Serializable {
     public List<Person> getAllPeople() {
     	return null;
     }
+    
+    public List<Address> getAllAddresses() {
+    	return null;
+    }
+    
+    public List<BloodDonation> getAllBloodDonations() {
+    	return null;
+    }
 
     public Person getPersonId(int id) {
+    	return null;
+    }
+    
+    public Address getAddressId(int it) {
+    	return null;
+    }
+    
+    public BloodDonation getBloodDonationId(int it) {
     	return null;
     }
 
     @Transactional
     public Person persistPerson(Person newPerson) {
+    	return null;
+    }
+    
+    @Transactional
+    public Address persistAddress(Address newAddress) {
+    	return null;
+    }
+    
+    @Transactional
+    public BloodDonation persistBloodDonation(BloodDonation newBloodDonation) {
     	return null;
     }
 
@@ -127,6 +153,28 @@ public class BloodBankService implements Serializable {
         }
         return personToBeUpdated;
     }
+    
+    @Transactional
+    public Address updateAddressById(int id, Address addressWithUpdates) {
+        Address addressToBeUpdated = getAddressId(id);
+        if (addressToBeUpdated != null) {
+            em.refresh(addressToBeUpdated);
+            em.merge(addressWithUpdates);
+            em.flush();
+        }
+        return addressToBeUpdated;
+    }
+    
+    @Transactional
+    public BloodDonation updateBloodDonationById(int id, BloodDonation bloodDonationWithUpdates) {
+    	BloodDonation bloodDonationToBeUpdated = getBloodDonationId(id);
+        if (bloodDonationToBeUpdated != null) {
+            em.refresh(bloodDonationToBeUpdated);
+            em.merge(bloodDonationWithUpdates);
+            em.flush();
+        }
+        return bloodDonationToBeUpdated;
+    }
 
     /**
      * to delete a person by id
@@ -144,6 +192,22 @@ public class BloodBankService implements Serializable {
             SecurityUser sUser = findUser.getSingleResult();
             em.remove(sUser);
             em.remove(person);
+        }
+    }
+    
+    @Transactional
+    public void deleteAddressById(int id) {
+        Address address = getAddressId(id);
+        if (address != null) {
+            em.remove(address);
+        }
+    }
+    
+    @Transactional
+    public void deleteBloodDonationById(int id) {
+        BloodDonation bloodDonation = getBloodDonationId(id);
+        if (bloodDonation != null) {
+            em.remove(bloodDonation);
         }
     }
 }

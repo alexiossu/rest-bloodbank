@@ -15,6 +15,8 @@ import static bloodbank.utility.MyConstants.DEFAULT_ADMIN_USER_PASSWORD;
 import static bloodbank.utility.MyConstants.DEFAULT_USER_PASSWORD;
 import static bloodbank.utility.MyConstants.DEFAULT_USER_PREFIX;
 import static bloodbank.utility.MyConstants.PERSON_RESOURCE_NAME;
+import static bloodbank.utility.MyConstants.ADDRESS_RESOURCE_NAME;
+import static bloodbank.utility.MyConstants.BLOOD_DONATION_RESOURCE_NAME;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -46,6 +48,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
+import bloodbank.entity.Address;
 import bloodbank.entity.Person;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
@@ -97,4 +100,5 @@ public class TestBloodBankSystem {
         assertThat(emps, is(not(empty())));
         assertThat(emps, hasSize(1));
     }
+    
 }

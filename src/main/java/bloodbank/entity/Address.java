@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import org.hibernate.Hibernate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The persistent class for the address database table.
  */
@@ -29,13 +31,15 @@ import org.hibernate.Hibernate;
 //Hint - @NamedQuery attached to this class which uses JPQL/HQL. SQL cannot be used with NamedQuery.
 //Hint - @NamedQuery uses the name which is defined in @Entity for JPQL, if no name is defined use class name.
 //Hint - @NamedNativeQuery can optionally be used if there is a need for SQL query.
-@NamedQuery( name = "Address.findAll", query = "SELECT a FROM Address a")
+@NamedQuery( name = Address.ALL_ADDRESS_QUERY_NAME, query = "SELECT a FROM Address a")
 //Hint - @AttributeOverride can overrides column details. This Entity uses address_id as its primary key name, it needs to override the name in the mapped super class.
 @AttributeOverride( name = "id", column = @Column( name = "address_id"))
 //Hint - PojoBase is inherited by any entity with integer as their primary key.
 //Hint - PojoBaseCompositeKey is inherited by any entity with a composite key as their primary key.
 public class Address extends PojoBase implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	public static final String ALL_ADDRESS_QUERY_NAME = "Address.findAll";
 
 	// Hint - @Basic( optional = false) is used when the object cannot be null.
 	// Hint - @Basic or none can be used if the object can be null.
@@ -131,6 +135,7 @@ public class Address extends PojoBase implements Serializable {
 		this.zipcode = zipcode;
 	}
 
+	@JsonIgnore
 	public Set< Contact> getContacts() {
 		return contacts;
 	}
